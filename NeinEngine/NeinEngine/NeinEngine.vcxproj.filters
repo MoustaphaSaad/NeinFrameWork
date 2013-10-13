@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\NEngine">
+      <UniqueIdentifier>{5db8f0ca-7b48-4e62-8553-0a37cbd0183c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLUtil.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderUtil.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="gameTime.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.c">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicPositionShader.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicPositionColorShader.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicPositionTextureShader.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhongShader.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLUtil.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUtil.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="NEngine.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="gameTime.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGame.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="MathAssists.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJLoader.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="IVertex.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicPositionShader.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicPositionColorShader.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicPositionTextureShader.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhongShader.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
