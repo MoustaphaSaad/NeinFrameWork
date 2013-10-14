@@ -30,9 +30,9 @@ public:
 			}else if(type_str == TOKEN_INDEX_V){
 				int i1,i2,i3;
 				str_stream>>i1>>i2>>i3;
-				indices.push_back(i1);
-				indices.push_back(i2);
-				indices.push_back(i3);
+				indices.push_back(i1-1);
+				indices.push_back(i2-1);
+				indices.push_back(i3-1);
 			}
 		}
 		fileStream.close();
