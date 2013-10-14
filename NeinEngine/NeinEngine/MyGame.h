@@ -4,20 +4,20 @@
 #include"SDL.h"
 class MyGame:public Game{
 public :
-	Transform transform;
-	Camera cam;
+	//Transform transform;
+	//Camera cam;
 	Sprite sprite;
 	double s;
 	void init(){
-		cam = Camera();
+		/*cam = Camera();
 		Transform::setProjection(70.0f,(float)Window::getWidth(),(float)Window::getHeight(),0.1f,1000.0f);
-		Transform::setCamera(cam);
+		Transform::setCamera(cam);*/
 		s=0;
-		sprite.setTexture(Texture("texture.png"));
-		sprite.setRotation(Vector3(45,0,0));
+		sprite.setTexture("res//textures//texture.png");
+		sprite.setRectangle(0,0,256,256);
 	}
 	void input(){
-				cam.input();
+			//	cam.input();
 
 		
 		//printf("Input\n");
@@ -26,8 +26,9 @@ public :
 		//printf("Update\n");
 
 		s += gameTime::getDelta();
-		sprite.setScale(.5);
-		sprite.setPosition(Vector3(0,0,1));
+		//sprite.setScale(.1);
+		//sprite.setRotation(45);
+		//sprite.setPosition(Vector2(s*10,s*10));
 	}
 	void render(){
 		sprite.Draw();

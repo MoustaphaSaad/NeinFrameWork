@@ -1,4 +1,5 @@
 #include"Transform.h"
+#include"Vector2.h"
 
 Camera* Transform::m_camera = &Camera();
 float Transform::m_fov=0;
@@ -23,7 +24,6 @@ Matrix4 Transform::getTransformation(){
 
 	return translation*rotation*scale;
 }
-
 Matrix4 Transform::getProjectedTransformation(){
 	Matrix4 transformationMatrix = getTransformation();
 	Matrix4 projection;

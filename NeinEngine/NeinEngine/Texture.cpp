@@ -5,9 +5,12 @@
 Texture* Texture::m_lastBind = 0;
 
 Texture::Texture(const std::string& fileName,GLenum textureTarget,GLfloat filter){
+	this->Data = NULL;
 	int x,y,numComp;
-	unsigned char* data = stbi_load((".//res//textures//"+fileName).c_str(),&x,&y,&numComp,4);
+	unsigned char* data = stbi_load((fileName).c_str(),&x,&y,&numComp,4);
 
+	if(data!=NULL)
+		this->Data = data;
 	if(data == NULL){
 		std::cerr<<"UNAVLE TO LOAD TEXTURE : "<<fileName<<std::endl;
 	}
@@ -16,6 +19,7 @@ Texture::Texture(const std::string& fileName,GLenum textureTarget,GLfloat filter
 	stbi_image_free(data);
 }
 Texture::Texture(int width,int height,unsigned char* data,GLenum textureTarget,GLfloat filter){
+	this->Data = NULL;
 	initTexture(width,height,data,textureTarget,filter);
 }
 
@@ -23,6 +27,10 @@ void Texture::initTexture(int width,int height,unsigned char* data,GLenum textur
 	m_textureTarget = textureTarget;
 	m_freeTexture = true;
 
+	Width = width;
+	Height = height;
+	if(data!=NULL)
+		this->Data= data;
 	if(width>0 &&height>0&&data!=0){
 		glGenTextures(1,&m_textureID);
 		glBindTexture(textureTarget,m_textureID);
@@ -48,7 +56,9 @@ void Texture::operator=(Texture& texture){
 	m_textureID = texture.m_textureID;
 	m_freeTexture = true;
 	texture.m_freeTexture = false;
-
+	Width = texture.getWidth();
+	Height = texture.getHeight();
+	Data = texture.getData();
 }
 void Texture::bind(GLenum textureUnit){
 	if(m_lastBind != this){

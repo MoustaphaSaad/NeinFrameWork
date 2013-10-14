@@ -5,63 +5,70 @@
 #include"Transform.h"
 #include"Vertex.h"
 #include"BasicPositionTextureShader.h"
+#include"SDL.h"
 class Sprite{
-	BasicPositionTextureShader shader;
-	Texture texture;
-	Mesh<PositionTextureVertex> mesh;
-	Transform transform;
-	Vector3 position,rotation,scale;
-	void setRectangle(){
-		mesh = Mesh<PositionTextureVertex>();
-		PositionTextureVertex data[] = {
-			PositionTextureVertex(Vector3(-1,-1,1),Vector2(0,1),Vector3(0,0,0)),
-			PositionTextureVertex(Vector3(-1,1,1),Vector2(0,0),Vector3(0,0,0)),
-			PositionTextureVertex(Vector3(1,1,1),Vector2(1,0),Vector3(0,0,0)),
-			PositionTextureVertex(Vector3(1,-1,1),Vector2(1,1),Vector3(0,0,0)),
-		};
-		int IData[] = {0,1,2,2,3,0};
-		mesh.addVertices(data,ARRAY_SIZE(data),IData,ARRAY_SIZE(IData));
-	}
-	void update(){
-		transform.setPosition(position);
-		transform.setRotation(rotation);
-		transform.setScale(scale);
-	}
+	Texture* texture;
+	int W,H;
+	Vector2 position;float rotation,scale;
+	Quaternion rect;
 public:
-	Sprite(Vector3 position=Vector3(0,0,0),Vector3 rotation=Vector3(0,0,0),Vector3 scale = Vector3(1,1,1)){
+	Sprite(Vector2 position=Vector2(0,0),float rotation = 0,float scale = 1,Quaternion RECT=Quaternion(0,0,0,0)){
 		this->position = position;
 		this->rotation = rotation;
 		this->scale = scale;
-		setRectangle();
-		shader = BasicPositionTextureShader::getInstance();
+		rect = RECT;
 	}
-	void setPosition(Vector3 val){
+	void setPosition(Vector2 val){
 		this->position = val;
 	}
-	void setRotation(Vector3 val){
+	void setRotation(float val){
 		this->rotation = val;
 	}
 	void setScale(float val){
-		this->scale = Vector3(val,val,1);
+		this->scale = val;
 	}
-	void setTexture(Texture val){
-		this->texture = val;
+	void setTexture(char* filename){
+		texture = new Texture(filename);
+		rect=Quaternion(0,0,texture->getWidth(),texture->getHeight());
 	}
-	Vector3 getPosition(){
+	Vector2 getPosition(){
 		return position;
 	}
-	Vector3 getRotation(){
+	float getRotation(){
 		return rotation;
 	}
 	float getScale(){
-		return scale.x;
+		return scale;
+	}
+	void setRectangle(int x,int y,int W,int H){
+		rect = Quaternion(x,y,W,H);
+	}
+	Quaternion getRectangle(){
+		return rect;
 	}
 	void Draw(){
-		update();
-		shader.bind();
-		shader.updateUniforms(transform.getTransformation(),transform.getProjectedTransformation());
-		texture.bind();
-		mesh.draw();
+		glMatrixMode (GL_PROJECTION);
+		glLoadIdentity ();
+		gluOrtho2D (0, Window::getWidth(), Window::getHeight(),0);
+		glEnable(GL_TEXTURE_2D);
+		texture->bind();
+		glScalef(scale,scale,0);
+		glRotatef(rotation,0,0,1);
+		glBegin(GL_QUADS);
+		
+
+		glTexCoord2f(rect.x/texture->getWidth()+0,rect.y/texture->getHeight()+0); 
+		glVertex2f(position.x,position.y);
+		glTexCoord2f(rect.z/texture->getWidth(),0); 
+		glVertex2f(texture->getWidth()+position.x,position.y);
+		glTexCoord2f(rect.z/texture->getWidth(),rect.w/texture->getHeight()); 
+		glVertex2f(texture->getWidth()+position.x,texture->getHeight()+position.y);
+		glTexCoord2f(0,rect.w/texture->getHeight()); 
+		glVertex2f(position.x,texture->getHeight()+position.y);
+
+		glEnd();
+		glDisable(GL_TEXTURE_2D);
+		glMatrixMode (GL_MODELVIEW);
 	}
 };
 #endif
