@@ -16,7 +16,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -75,6 +75,7 @@
     <ClCompile Include="BasicPositionTextureShader.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="gameTime.cpp" />
+    <ClCompile Include="GenericShader.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="Matrix4.cpp" />
     <ClCompile Include="PhongShader.cpp" />
@@ -82,7 +83,9 @@
     <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="SDLUtil.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Source.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="stb_image.c" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -91,6 +94,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GenericShader.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="BasicPositionColorShader.h" />
     <ClInclude Include="BasicPositionShader.h" />
@@ -100,13 +104,18 @@
     <ClInclude Include="gameTime.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="IVertex.h" />
+    <ClInclude Include="material.h" />
     <ClInclude Include="MathAssists.h" />
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="MyGame.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="MyGame.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="NEngine.h" />
     <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="PhongShader.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Quaternion.h" />

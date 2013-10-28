@@ -26,3 +26,7 @@
 #include"Sprite.h"
 #include"PhongShader.h"
 #include"Light.h"
+#include"material.h"
+#include"Skybox.h"
+#include"Model.h"
+#include"GenericShader.h"

@@ -4,6 +4,7 @@
 
 class Camera{
 public :
+	Vector3 rot;
 	Camera(Vector3 pos = Vector3(0,0,0),Vector3 forward=Vector3(0,0,1),Vector3 up = Vector3(0,1,0));
 	~Camera();
 
@@ -22,6 +23,7 @@ public :
 	void setPosition(const Vector3& pos);
 	void setForward(const Vector3& forward);
 	void setUp(const Vector3& up);
+	void rotate(Vector3 amt);
 private:
 	Vector3 m_position,m_forward,m_up;
 };

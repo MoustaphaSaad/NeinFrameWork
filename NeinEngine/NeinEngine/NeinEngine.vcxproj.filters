@@ -75,6 +75,9 @@
     <ClCompile Include="PhongShader.cpp">
       <Filter>Header Files\NEngine</Filter>
     </ClCompile>
+    <ClCompile Include="GenericShader.cpp">
+      <Filter>Header Files\NEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -159,6 +162,18 @@
       <Filter>Header Files\NEngine</Filter>
     </ClInclude>
     <ClInclude Include="Light.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="material.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\NEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericShader.h">
       <Filter>Header Files\NEngine</Filter>
     </ClInclude>
   </ItemGroup>

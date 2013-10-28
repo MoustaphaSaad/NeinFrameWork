@@ -38,7 +38,7 @@ public:
 		fileStream.close();
 		PositionVertex *VData=&positions[0];
 		int *IData=&indices[0];
-		ret->addVertices(VData,positions.size(),IData,indices.size());
+		ret->addVertices(VData,positions.size(),IData,indices.size(),true);
 	}
 };
 vector<PositionVertex> OBJLoader::positions = vector<PositionVertex>();

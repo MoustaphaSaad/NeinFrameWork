@@ -1,6 +1,7 @@
 #version 330
 
 in vec2 texCoord0;
+in vec3 normal0;
 
 out vec4 fragColor;
 //in vec4 color;
@@ -11,5 +12,5 @@ void main()
 {
 	//fragColor = color;
     fragColor = texture(sampler, texCoord0.xy);
-	
+	vec3 normall=normalize(normal0);
 }

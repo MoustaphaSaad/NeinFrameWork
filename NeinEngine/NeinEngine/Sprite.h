@@ -31,6 +31,9 @@ public:
 		texture = new Texture(filename);
 		rect=Quaternion(0,0,texture->getWidth(),texture->getHeight());
 	}
+	void setTexture(Texture *filename){
+		texture = filename;
+	}
 	Vector2 getPosition(){
 		return position;
 	}
@@ -46,12 +49,17 @@ public:
 	Quaternion getRectangle(){
 		return rect;
 	}
-	void Draw(){
+	
+	void Draw(GLuint ID=0){
+		glUseProgram(0);
 		glMatrixMode (GL_PROJECTION);
 		glLoadIdentity ();
 		gluOrtho2D (0, Window::getWidth(), Window::getHeight(),0);
 		glEnable(GL_TEXTURE_2D);
-		texture->bind();
+		if(!ID)
+			texture->bind();
+		else
+			glBindTexture(GL_TEXTURE_2D,ID);
 		glScalef(scale,scale,0);
 		glRotatef(rotation,0,0,1);
 		glBegin(GL_QUADS);

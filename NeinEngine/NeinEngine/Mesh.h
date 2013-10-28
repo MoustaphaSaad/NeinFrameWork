@@ -18,12 +18,12 @@ public :
 		glDeleteBuffers(1,&m_ibo);
 	}
 
-	void addVertices(T* vertices, int vertSize,int* indices,int indexSize){
+	void addVertices(T* vertices, int vertSize,int* indices,int indexSize,bool CN){
 
 		m_size = indexSize;
 
-		//if(CN)
-		//	this->calcNormals(vertices,vertSize,indices,indexSize);
+		if(CN)
+			this->calcNormals(vertices,vertSize,indices,indexSize);
 
 		glBindBuffer(GL_ARRAY_BUFFER,m_vbo);
 		glBufferData(GL_ARRAY_BUFFER,vertSize*T::SIZE,vertices,GL_STATIC_DRAW);
@@ -48,23 +48,25 @@ public :
 		glDisableVertexAttribArray(1);*/
 	}
 private:
-	//void calcNormals(T* vertices,int vertSize,int* indices, int indexSize){
-	//	for(int i=0;i<indexSize;i+=3){
-	//		int i0=indices[i];
-	//		int i1=indices[i+1];
-	//		int i2=indices[i+2];
+	void calcNormals(T* vertices,int vertSize,int* indices, int indexSize){
+		for(int i=0;i<indexSize;i+=3){
+			int i0=indices[i];
+			int i1=indices[i+1];
+			int i2=indices[i+2];
 
-	//		Vector3 v1 = vertices[i1].position - vertices[i0].position;
-	//		Vector3 v2 = vertices[i2].position - vertices[i0].position;
+			Vector3 v1 = vertices[i1].position - vertices[i0].position;
+			Vector3 v2 = vertices[i2].position - vertices[i0].position;
 
-	//		Vector3 normal = v1.cross(v2).normalize();
+			Vector3 normal = v1.cross(v2).normalize();
 
-	//		vertices[i0].normal += normal;
-	//		vertices[i1].normal += normal;
-	//		vertices[i2].normal += normal;
+			vertices[i0].normal += normal;
+			vertices[i1].normal += normal;
+			vertices[i2].normal += normal;
 
-	//	}
-	//}
+		}
+		for(int i = 0; i < vertSize; i++)
+			vertices[i].normal.normalize();
+	}
 
 	unsigned int m_vbo;
 	unsigned int m_ibo;

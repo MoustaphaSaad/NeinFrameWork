@@ -6,6 +6,7 @@ Camera::Camera(Vector3 pos,Vector3 forward,Vector3 up){
 	m_position = pos;
 	m_forward = forward;
 	m_up = up;
+	rot=Vector3(0,0,0);
 }
 Camera::~Camera(){
 }
@@ -14,7 +15,7 @@ bool mouseLocked=false;
 
 void Camera::input(){
 	float sensitivity = 0.5f;
-	float movAmt= (float)(10*gameTime::getDelta());
+	float movAmt= (float)(50*gameTime::getDelta());
 	float rotAmt=(float)(100* gameTime::getDelta());
 
 	if(Input::getKeyDown(KEY::KEY_ESCAPE)){
@@ -27,6 +28,8 @@ void Camera::input(){
 
 		bool rotY = deltaPos.x !=0;
 		bool rotX = deltaPos.y !=0;
+
+
 
 		if(rotY)
 			rotateY(deltaPos.x*sensitivity);
@@ -56,11 +59,13 @@ void Camera::move(const Vector3& dir,float amt){
 	m_position +=(dir*amt);
 }
 void Camera::rotateY(float angle){
+	rot.y+=angle;
 	Vector3 hAxis=Vector3::UP.cross(m_forward).normalize();
 	m_forward = m_forward.rotate(angle,Vector3::UP).normalize();
 	m_up = m_forward.cross(hAxis).normalize();
 }
 void Camera::rotateX(float angle){
+	rot.x+=angle;
 	Vector3 hAxis=Vector3::UP.cross(m_forward).normalize();
 	m_forward = m_forward.rotate(angle,hAxis).normalize();
 	m_up = m_forward.cross(hAxis).normalize();
@@ -74,6 +79,10 @@ Vector3 Camera::getForward(){
 }
 Vector3 Camera::getUp(){
 	return m_up;
+}
+void Camera::rotate(Vector3 amt){
+	rotateX(amt.x);
+	rotateY(amt.y);
 }
 void Camera::setPosition(const Vector3& val){
 	m_position= val;
